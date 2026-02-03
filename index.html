@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master4You — поиск клиентов для мастеров</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav">
+        <div class="logo">Master4You</div>
+        <div class="nav-actions">
+          <button class="ghost">Для клиентов</button>
+          <button class="primary">Стать мастером</button>
+        </div>
+      </nav>
+      <div class="hero-content">
+        <h1>Находите клиентов быстрее, чем на Profi</h1>
+        <p>
+          Площадка для частных мастеров: умный подбор заказов, прозрачная комиссия и
+          мгновенный чат.
+        </p>
+        <div class="hero-search">
+          <div class="input-group">
+            <input id="searchInput" type="text" placeholder="Что вы умеете? Например, маникюр" />
+            <button id="searchButton" class="primary">Найти заказы</button>
+          </div>
+          <div class="chips">
+            <button class="chip" data-category="beauty">Красота</button>
+            <button class="chip" data-category="repair">Ремонт</button>
+            <button class="chip" data-category="tutoring">Обучение</button>
+            <button class="chip" data-category="cleaning">Уборка</button>
+            <button class="chip" data-category="events">События</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-header">
+          <h2>Актуальные заказы</h2>
+          <div class="filters">
+            <select id="cityFilter">
+              <option value="">Все города</option>
+              <option value="Москва">Москва</option>
+              <option value="Санкт-Петербург">Санкт-Петербург</option>
+              <option value="Казань">Казань</option>
+              <option value="Екатеринбург">Екатеринбург</option>
+            </select>
+            <select id="budgetFilter">
+              <option value="">Любой бюджет</option>
+              <option value="0-3000">до 3 000 ₽</option>
+              <option value="3000-7000">3 000–7 000 ₽</option>
+              <option value="7000">от 7 000 ₽</option>
+            </select>
+            <select id="sortFilter">
+              <option value="new">Сначала новые</option>
+              <option value="budget">По бюджету</option>
+            </select>
+          </div>
+        </div>
+        <div id="orders" class="cards"></div>
+      </section>
+
+      <section class="section highlight">
+        <div>
+          <h2>Почему мастера выбирают Master4You</h2>
+          <ul>
+            <li>Комиссия от 3% без скрытых сборов.</li>
+            <li>Умные заявки: показываем только релевантных клиентов.</li>
+            <li>Автоматический календарь и напоминания.</li>
+            <li>Безопасные платежи и быстрые выплаты.</li>
+          </ul>
+        </div>
+        <div class="stats">
+          <div>
+            <strong>24 500+</strong>
+            <span>мастеров уже в сервисе</span>
+          </div>
+          <div>
+            <strong>2 800</strong>
+            <span>заявок в день</span>
+          </div>
+          <div>
+            <strong>4,9/5</strong>
+            <span>средняя оценка</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="cta">
+        <div class="cta-card">
+          <h2>Запускайте поиск клиентов за 10 минут</h2>
+          <p>Создайте профиль, подключите календарь и получите первые заказы.</p>
+          <button class="primary">Зарегистрироваться</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2025 Master4You</span>
+      <div class="footer-links">
+        <a href="#">Политика</a>
+        <a href="#">Помощь</a>
+        <a href="#">Контакты</a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
