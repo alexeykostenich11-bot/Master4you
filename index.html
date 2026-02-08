@@ -3,118 +3,148 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Master4You — поиск клиентов для мастеров</title>
+    <title>Master4You — сервис для клиентов и мастеров</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="hero">
-      <nav class="nav">
-        <div class="logo">Master4You</div>
-        <div class="nav-actions">
-          <button class="ghost">Для клиентов</button>
-          <button class="primary">Стать мастером</button>
-        </div>
+    <header class="site-header">
+      <div class="brand">
+        <span class="logo">Master4You</span>
+        <span class="tagline">Найти мастера или заказ за пару кликов</span>
+      </div>
+      <nav class="nav-tabs">
+        <button class="tab active" id="tabClient" type="button">Я клиент</button>
+        <button class="tab" id="tabMaster" type="button">Я мастер</button>
       </nav>
-      <div class="hero-content">
-        <h1>Находите клиентов быстрее, чем на Profi</h1>
-        <p>
-          Площадка для частных мастеров: умный подбор заказов, прозрачная комиссия и
-          мгновенный чат.
-        </p>
-        <div class="hero-search">
-          <div class="input-group">
-            <input id="searchInput" type="text" placeholder="Что вы умеете? Например, маникюр" />
-            <button id="searchButton" class="primary">Найти заказы</button>
-          </div>
-          <div class="chips">
-            <button class="chip" data-category="beauty">Красота</button>
-            <button class="chip" data-category="repair">Ремонт</button>
-            <button class="chip" data-category="tutoring">Обучение</button>
-            <button class="chip" data-category="cleaning">Уборка</button>
-            <button class="chip" data-category="events">События</button>
-          </div>
-        </div>
+      <div class="cta-group">
+        <button class="ghost" type="button">Связаться</button>
+        <button class="primary" type="button">Создать профиль</button>
       </div>
     </header>
 
     <main>
-      <section class="section">
-        <div class="section-header">
-          <h2>Актуальные заказы</h2>
-          <div class="filters">
-            <select id="cityFilter">
-              <option value="">Все города</option>
-              <option value="Москва">Москва</option>
-              <option value="Санкт-Петербург">Санкт-Петербург</option>
-              <option value="Казань">Казань</option>
-              <option value="Екатеринбург">Екатеринбург</option>
-            </select>
-            <select id="budgetFilter">
-              <option value="">Любой бюджет</option>
-              <option value="0-3000">до 3 000 ₽</option>
-              <option value="3000-7000">3 000–7 000 ₽</option>
-              <option value="7000">от 7 000 ₽</option>
-            </select>
-            <select id="sortFilter">
-              <option value="new">Сначала новые</option>
-              <option value="budget">По бюджету</option>
-            </select>
-          </div>
-        </div>
-        <div id="orders" class="cards"></div>
-      </section>
-
-      <section class="section highlight">
-        <div>
-          <h2>Почему мастера выбирают Master4You</h2>
-          <ul>
-            <li>Без посредников: клиент и мастер связываются напрямую.</li>
-            <li>Умные заявки — показываем только релевантных клиентов.</li>
-            <li>Быстрый старт: профиль, календарь и заявки в одном месте.</li>
-            <li>Без переплат и предоплат — всё прозрачно и эффективно.</li>
-          </ul>
-        </div>
-        <div class="stats">
+      <section class="page active" id="pageClient">
+        <section class="hero">
           <div>
-            <strong>24 500+</strong>
-            <span>мастеров уже в сервисе</span>
-          </div>
-          <div>
-            <strong>2 800</strong>
-            <span>заявок в день</span>
-          </div>
-          <div>
-            <strong>4,9/5</strong>
-            <span>средняя оценка</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="section" id="cta">
-        <div class="cta-card">
-          <h2>Запускайте поиск клиентов за 10 минут</h2>
-          <p>Создайте профиль, подключите календарь и получите первые заказы.</p>
-          <button class="primary">Зарегистрироваться</button>
-        </div>
-      </section>
-
-      <section class="section" id="registration">
-        <div class="registration-card">
-          <div>
-            <h2>Регистрация мастера</h2>
+            <h1>Выбирайте мастера под вашу задачу</h1>
             <p>
-              Оставьте контакты, чтобы мы могли связать вас с реальными клиентами без
-              посредников.
+              Укажите услугу и город, сравните портфолио и получите быстрый отклик от
+              проверенных исполнителей.
             </p>
-            <div class="registration-benefits">
-              <span>⚡ Быстрая модерация</span>
-              <span>📍 Реальные клиенты рядом</span>
-              <span>🔒 Безопасные контакты</span>
+          </div>
+          <div class="hero-card">
+            <div class="input-grid">
+              <label>
+                Что нужно?
+                <input
+                  id="searchInput"
+                  type="text"
+                  placeholder="Маникюр, ремонт кухни, репетитор"
+                />
+              </label>
+              <label>
+                Город
+                <select id="cityFilter">
+                  <option value="">Любой</option>
+                  <option value="Москва">Москва</option>
+                  <option value="Санкт-Петербург">Санкт-Петербург</option>
+                  <option value="Казань">Казань</option>
+                  <option value="Екатеринбург">Екатеринбург</option>
+                </select>
+              </label>
+              <label>
+                Бюджет
+                <select id="budgetFilter">
+                  <option value="">Любой</option>
+                  <option value="0-3000">до 3 000 ₽</option>
+                  <option value="3000-7000">3 000–7 000 ₽</option>
+                  <option value="7000">от 7 000 ₽</option>
+                </select>
+              </label>
             </div>
+            <div class="hero-actions">
+              <button class="primary" id="searchButton" type="button">Показать мастеров</button>
+              <button class="ghost" id="clearButton" type="button">Сбросить</button>
+            </div>
+            <div class="chips">
+              <button class="chip" data-category="beauty" type="button">Красота</button>
+              <button class="chip" data-category="repair" type="button">Ремонт</button>
+              <button class="chip" data-category="tutoring" type="button">Обучение</button>
+              <button class="chip" data-category="cleaning" type="button">Уборка</button>
+              <button class="chip" data-category="events" type="button">События</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <h2>Подходящие мастера</h2>
+            <select id="sortFilter">
+              <option value="rating">По рейтингу</option>
+              <option value="budget">По цене</option>
+              <option value="new">Сначала новые</option>
+            </select>
+          </div>
+          <div id="orders" class="cards"></div>
+        </section>
+      </section>
+
+      <section class="page" id="pageMaster">
+        <section class="hero hero-master">
+          <div>
+            <h1>Получайте заказы каждый день</h1>
+            <p>
+              Создайте профиль, покажите портфолио и принимайте заявки без посредников.
+              Всё управление — в одном кабинете.
+            </p>
+            <div class="hero-actions">
+              <button class="primary" type="button">Создать профиль</button>
+              <button class="ghost" type="button">Посмотреть тарифы</button>
+            </div>
+          </div>
+          <div class="hero-card">
+            <h3>Что вы получите</h3>
+            <ul class="feature-list">
+              <li>Персональная лента заказов по специализации.</li>
+              <li>Чат и уведомления о новых заявках.</li>
+              <li>Календарь и быстрые слоты для брони.</li>
+              <li>Прозрачная комиссия без скрытых платежей.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section highlight">
+          <div>
+            <h2>Старт за 10 минут</h2>
+            <p>
+              Заполните анкету, добавьте услуги и укажите график. Мы покажем вас клиентам,
+              которые ищут мастера прямо сейчас.
+            </p>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <strong>1.</strong>
+              <span>Создайте профиль и загрузите примеры работ.</span>
+            </div>
+            <div class="step">
+              <strong>2.</strong>
+              <span>Укажите прайс и свободные часы.</span>
+            </div>
+            <div class="step">
+              <strong>3.</strong>
+              <span>Получайте заявки и подтверждайте брони.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section form-section">
+          <div>
+            <h2>Оставьте заявку на подключение</h2>
+            <p>Команда Master4You свяжется с вами и поможет запустить профиль.</p>
           </div>
           <form class="registration-form">
             <label>
-              Имя и фамилия
+              Имя
               <input type="text" placeholder="Анна Иванова" required />
             </label>
             <label>
@@ -122,27 +152,27 @@
               <input type="text" placeholder="Маникюр, ремонт, репетиторство" required />
             </label>
             <label>
-              Город
-              <input type="text" placeholder="Москва" required />
-            </label>
-            <label>
               Телефон
               <input type="tel" placeholder="+7 (999) 123-45-67" required />
             </label>
-            <button class="primary" type="submit">Создать профиль</button>
+            <label>
+              Город
+              <input type="text" placeholder="Москва" required />
+            </label>
+            <button class="primary" type="submit">Отправить</button>
             <span class="form-hint">
-              Нажимая кнопку, вы подтверждаете, что готовы получать заявки от клиентов.
+              Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
             </span>
           </form>
-        </div>
+        </section>
       </section>
     </main>
 
-    <footer>
+    <footer class="footer">
       <span>© 2025 Master4You</span>
       <div class="footer-links">
-        <a href="#">Политика</a>
-        <a href="#">Помощь</a>
+        <a href="#">Документы</a>
+        <a href="#">Поддержка</a>
         <a href="#">Контакты</a>
       </div>
     </footer>
