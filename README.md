@@ -10,4 +10,26 @@
 python -m http.server 8000
 ```
 
-Затем перейдите на `http://localhost:8000`.
+Затем перейдите на `http://localhost:8000` (если браузер показывает "Not found", откройте
+`http://localhost:8000/index.html`).
+
+## Публичная ссылка для показа друзьям
+
+Самый простой способ — использовать туннель. Запустите локальный сервер (см. выше), затем
+откройте публичный URL одним из вариантов ниже:
+
+### Вариант 1: Cloudflare Tunnel (рекомендуется, без регистрации)
+
+```bash
+cloudflared tunnel --url http://localhost:8000
+```
+
+В терминале появится публичная ссылка вида `https://*.trycloudflare.com`.
+
+### Вариант 2: LocalTunnel (через Node.js)
+
+```bash
+npx localtunnel --port 8000
+```
+
+Команда вернёт ссылку вида `https://*.loca.lt`.
