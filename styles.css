@@ -1,12 +1,13 @@
 :root {
   color-scheme: light;
   font-family: "Inter", "Segoe UI", sans-serif;
-  --primary: #5b3df5;
-  --primary-dark: #462bd1;
-  --bg: #f6f7fb;
-  --text: #1b1b1f;
-  --muted: #6b6b7b;
-  --card: #ffffff;
+  --primary: #ffb400;
+  --primary-dark: #e1322a;
+  --accent: #ff3d2e;
+  --bg: #fff3b0;
+  --text: #1f0d00;
+  --muted: #6b3b00;
+  --card: #fff7d6;
 }
 
 * {
@@ -22,8 +23,8 @@ body {
 }
 
 .hero {
-  background: linear-gradient(135deg, #5b3df5 0%, #7b66ff 40%, #b5d2ff 100%);
-  color: #fff;
+  background: linear-gradient(135deg, #ffcc33 0%, #ff3d2e 60%, #c8161d 100%);
+  color: #2b0b00;
   padding: 32px 8vw 64px;
 }
 
@@ -59,17 +60,18 @@ button:hover {
 
 button.primary {
   background: var(--primary);
-  color: #fff;
+  color: #2b0b00;
 }
 
 button.primary:hover {
   background: var(--primary-dark);
+  color: #fff;
 }
 
 button.ghost {
-  background: rgba(255, 255, 255, 0.25);
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 244, 184, 0.25);
+  color: #2b0b00;
+  border: 1px solid rgba(255, 244, 184, 0.8);
 }
 
 .hero-content {
@@ -84,15 +86,15 @@ button.ghost {
 .hero-content p {
   font-size: 1.05rem;
   margin-bottom: 24px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(43, 11, 0, 0.8);
 }
 
 .hero-search {
-  background: #fff;
+  background: #fff2bf;
   border-radius: 20px;
   padding: 18px;
   color: var(--text);
-  box-shadow: 0 20px 40px rgba(36, 25, 114, 0.18);
+  box-shadow: 0 20px 40px rgba(150, 45, 10, 0.18);
 }
 
 .input-group {
@@ -104,9 +106,10 @@ button.ghost {
 input {
   flex: 1;
   border-radius: 12px;
-  border: 1px solid #e0e3f2;
+  border: 1px solid #f2b104;
   padding: 12px 14px;
   font-size: 1rem;
+  background: #fffdf2;
 }
 
 .chips {
@@ -116,8 +119,8 @@ input {
 }
 
 .chip {
-  background: #eff0ff;
-  color: var(--primary);
+  background: #ffe08a;
+  color: #8f1a12;
   border-radius: 999px;
   padding: 6px 14px;
   font-size: 0.9rem;
@@ -125,8 +128,8 @@ input {
 }
 
 .chip.active {
-  background: var(--primary);
-  color: #fff;
+  background: var(--accent);
+  color: #fff7d6;
 }
 
 main {
@@ -152,10 +155,10 @@ main {
 }
 
 select {
-  border: 1px solid #e2e6f3;
+  border: 1px solid #f2b104;
   border-radius: 12px;
   padding: 10px 12px;
-  background: #fff;
+  background: #fffdf2;
 }
 
 .cards {
@@ -168,7 +171,7 @@ select {
   background: var(--card);
   padding: 18px;
   border-radius: 16px;
-  box-shadow: 0 10px 24px rgba(36, 25, 114, 0.08);
+  box-shadow: 0 10px 24px rgba(164, 52, 12, 0.12);
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -189,22 +192,22 @@ select {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #f3f4ff;
-  color: var(--primary);
+  background: #ffe08a;
+  color: #8f1a12;
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 0.85rem;
 }
 
 .highlight {
-  background: #fff;
+  background: #ffeeb0;
   padding: 32px;
   border-radius: 24px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 24px;
   align-items: center;
-  box-shadow: 0 12px 30px rgba(36, 25, 114, 0.08);
+  box-shadow: 0 12px 30px rgba(164, 52, 12, 0.12);
 }
 
 .highlight ul {
@@ -220,7 +223,7 @@ select {
 }
 
 .stats div {
-  background: #f7f7ff;
+  background: #ffe2a0;
   border-radius: 16px;
   padding: 16px;
 }
@@ -231,8 +234,8 @@ select {
 }
 
 .cta-card {
-  background: var(--primary);
-  color: #fff;
+  background: #e1322a;
+  color: #fff7d6;
   padding: 32px;
   border-radius: 20px;
   text-align: center;
@@ -240,11 +243,59 @@ select {
   gap: 12px;
 }
 
+.registration-card {
+  background: #fff1b9;
+  border-radius: 24px;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: start;
+  box-shadow: 0 16px 32px rgba(164, 52, 12, 0.12);
+}
+
+.registration-card h2 {
+  margin-bottom: 12px;
+}
+
+.registration-benefits {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  color: #6b3b00;
+  font-weight: 600;
+}
+
+.registration-form {
+  display: grid;
+  gap: 14px;
+  background: #fffdf2;
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid rgba(255, 180, 0, 0.4);
+}
+
+.registration-form label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+  color: #2b0b00;
+}
+
+.registration-form input {
+  width: 100%;
+}
+
+.form-hint {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
 footer {
   display: flex;
   justify-content: space-between;
   padding: 24px 8vw 32px;
-  color: var(--muted);
+  color: #6b3f00;
 }
 
 .footer-links {
