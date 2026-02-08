@@ -11,8 +11,8 @@
       <nav class="nav">
         <div class="logo">Master4You</div>
         <div class="nav-actions">
-          <button class="ghost">Для клиентов</button>
-          <button class="primary">Стать мастером</button>
+          <a class="ghost button-link" href="client.html">Для клиентов</a>
+          <a class="primary button-link" href="master.html">Стать мастером</a>
         </div>
       </nav>
       <div class="hero-content">
@@ -68,10 +68,10 @@
         <div>
           <h2>Почему мастера выбирают Master4You</h2>
           <ul>
-            <li>Комиссия от 3% без скрытых сборов.</li>
-            <li>Умные заявки: показываем только релевантных клиентов.</li>
-            <li>Автоматический календарь и напоминания.</li>
-            <li>Безопасные платежи и быстрые выплаты.</li>
+            <li>Без посредников: клиент и мастер связываются напрямую.</li>
+            <li>Умные заявки — показываем только релевантных клиентов.</li>
+            <li>Быстрый старт: профиль, календарь и заявки в одном месте.</li>
+            <li>Без переплат и предоплат — всё прозрачно и эффективно.</li>
           </ul>
         </div>
         <div class="stats">
@@ -94,7 +94,51 @@
         <div class="cta-card">
           <h2>Запускайте поиск клиентов за 10 минут</h2>
           <p>Создайте профиль, подключите календарь и получите первые заказы.</p>
-          <button class="primary">Зарегистрироваться</button>
+          <a class="primary button-link" href="master.html">Зарегистрироваться</a>
+        </div>
+      </section>
+
+      <section class="section" id="registration">
+        <div class="registration-card">
+          <div>
+            <h2>Регистрация мастера</h2>
+            <p>
+              Оставьте контакты, чтобы мы могли связать вас с реальными клиентами без
+              посредников.
+            </p>
+            <div class="registration-benefits">
+              <span>⚡ Быстрая модерация</span>
+              <span>📍 Реальные клиенты рядом</span>
+              <span>🔒 Безопасные контакты</span>
+            </div>
+          </div>
+          <form class="registration-form" id="landingRegistrationForm">
+            <label>
+              Имя и фамилия
+              <input id="landingName" type="text" placeholder="Анна Иванова" required />
+            </label>
+            <label>
+              Специализация
+              <input
+                id="landingSpecialty"
+                type="text"
+                placeholder="Маникюр, ремонт, репетиторство"
+                required
+              />
+            </label>
+            <label>
+              Город
+              <input id="landingCity" type="text" placeholder="Москва" required />
+            </label>
+            <label>
+              Телефон
+              <input id="landingContact" type="tel" placeholder="+7 (999) 123-45-67" required />
+            </label>
+            <button class="primary" type="submit">Создать профиль</button>
+            <span class="form-hint" id="landingRegistrationHint">
+              Нажимая кнопку, вы подтверждаете, что готовы получать заявки от клиентов.
+            </span>
+          </form>
         </div>
       </section>
     </main>
@@ -108,6 +152,7 @@
       </div>
     </footer>
 
+    <script src="shared.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-const orders = [
+const baseOrders = [
   {
     id: 1,
     title: "Маникюр + покрытие гель-лак",
@@ -77,12 +77,17 @@ const matchBudget = (budgetValue, filter) => {
   return budgetValue >= min && budgetValue <= max;
 };
 
+const getCombinedOrders = () => {
+  const clientOrders = storage.get("clientOrders");
+  return [...clientOrders, ...baseOrders];
+};
+
 const getFilteredOrders = () => {
   const query = state.query.toLowerCase();
   const city = cityFilter.value;
   const budget = budgetFilter.value;
 
-  return orders
+  return getCombinedOrders()
     .filter((order) => {
       const matchQuery = order.title.toLowerCase().includes(query);
       const matchCity = city ? order.city === city : true;
@@ -153,3 +158,26 @@ budgetFilter.addEventListener("change", renderOrders);
 sortFilter.addEventListener("change", renderOrders);
 
 renderOrders();
+
+const landingForm = document.getElementById("landingRegistrationForm");
+const landingHint = document.getElementById("landingRegistrationHint");
+
+landingForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const newMaster = {
+    id: Date.now(),
+    name: document.getElementById("landingName").value.trim(),
+    category: "custom",
+    city: document.getElementById("landingCity").value.trim(),
+    contact: document.getElementById("landingContact").value.trim(),
+    about: document.getElementById("landingSpecialty").value.trim(),
+  };
+
+  const masters = storage.get("masterProfiles");
+  masters.unshift(newMaster);
+  storage.set("masterProfiles", masters);
+  landingForm.reset();
+  if (landingHint) {
+    landingHint.textContent = "Профиль создан — вы получите отклики от клиентов.";
+  }
+});

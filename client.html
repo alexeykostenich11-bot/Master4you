@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master4You — страница клиента</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero compact">
+      <nav class="nav">
+        <div class="logo">Master4You</div>
+        <div class="nav-actions">
+          <a class="ghost button-link" href="index.html">Главная</a>
+          <a class="primary button-link" href="master.html">Для мастеров</a>
+        </div>
+      </nav>
+      <div class="hero-content">
+        <h1>Создайте заказ и найдите мастера</h1>
+        <p>
+          Опишите задачу, укажите бюджет и получите отклики от мастеров без посредников.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-header">
+          <h2>Новый заказ</h2>
+        </div>
+        <div class="form-layout">
+          <form class="form-card" id="clientOrderForm">
+            <label>
+              Тип услуги
+              <select id="orderCategory" required>
+                <option value="">Выберите категорию</option>
+                <option value="repair">Ремонт</option>
+                <option value="cleaning">Клининг</option>
+                <option value="beauty">Ногти и бьюти</option>
+                <option value="tutoring">Обучение</option>
+                <option value="events">События</option>
+              </select>
+            </label>
+            <label>
+              Описание задачи
+              <input id="orderTitle" type="text" placeholder="Например, покрасить стены" required />
+            </label>
+            <label>
+              Город
+              <input id="orderCity" type="text" placeholder="Москва" required />
+            </label>
+            <label>
+              Бюджет
+              <input id="orderBudget" type="number" min="0" placeholder="3000" required />
+            </label>
+            <label>
+              Контакт для связи
+              <input id="orderContact" type="text" placeholder="Telegram или телефон" required />
+            </label>
+            <button class="primary" type="submit">Опубликовать заказ</button>
+            <span class="form-hint" id="clientOrderHint">
+              После публикации мастера смогут откликнуться и связаться с вами напрямую.
+            </span>
+          </form>
+          <div class="info-card">
+            <h3>Как это работает</h3>
+            <ul>
+              <li>Вы создаёте заявку в пару кликов.</li>
+              <li>Мастера получают уведомления и откликаются.</li>
+              <li>Связываетесь напрямую и договариваетесь о деталях.</li>
+            </ul>
+            <div class="info-highlight">
+              <strong>Без переплат и предоплат.</strong>
+              <p>Только прозрачное общение между клиентом и мастером.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Ваши активные заказы</h2>
+        </div>
+        <div class="cards" id="clientOrdersList"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2>Доступные мастера</h2>
+        </div>
+        <div class="cards" id="clientMastersList"></div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2025 Master4You</span>
+      <div class="footer-links">
+        <a href="index.html">Главная</a>
+        <a href="master.html">Для мастеров</a>
+      </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script src="client.js"></script>
+  </body>
+</html>
