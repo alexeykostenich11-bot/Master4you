@@ -1,57 +1,63 @@
-const orders = [
+const masters = [
   {
     id: 1,
-    title: "Маникюр + покрытие гель-лак",
+    name: "Анна Иванова",
+    title: "Маникюр и дизайн ногтей",
     city: "Москва",
-    budget: 3500,
+    budget: 3200,
     category: "beauty",
-    client: "Анна",
-    date: "Сегодня",
+    rating: 4.9,
+    experience: "6 лет опыта",
   },
   {
     id: 2,
-    title: "Сборка кухни под ключ",
+    name: "Игорь Смирнов",
+    title: "Сборка мебели и кухни",
     city: "Санкт-Петербург",
-    budget: 12000,
+    budget: 11000,
     category: "repair",
-    client: "Игорь",
-    date: "Завтра",
+    rating: 4.8,
+    experience: "10 лет опыта",
   },
   {
     id: 3,
-    title: "Репетитор по математике (8 класс)",
+    name: "Наталья Кузнецова",
+    title: "Репетитор по математике",
     city: "Казань",
-    budget: 2500,
+    budget: 2200,
     category: "tutoring",
-    client: "Наталья",
-    date: "Сегодня",
+    rating: 5.0,
+    experience: "Подготовка к ОГЭ/ЕГЭ",
   },
   {
     id: 4,
-    title: "Генеральная уборка квартиры 60 м²",
+    name: "Сергей Волков",
+    title: "Генеральная уборка квартир",
     city: "Москва",
-    budget: 5000,
+    budget: 4800,
     category: "cleaning",
-    client: "Сергей",
-    date: "На выходных",
+    rating: 4.7,
+    experience: "20+ заказов",
   },
   {
     id: 5,
-    title: "Ведущий на свадьбу",
+    name: "Марина Лукина",
+    title: "Ведущая мероприятий",
     city: "Екатеринбург",
     budget: 18000,
     category: "events",
-    client: "Марина",
-    date: "Через неделю",
+    rating: 4.9,
+    experience: "Свадьбы и корпоративы",
   },
   {
     id: 6,
+    name: "Ольга Борисова",
     title: "Наращивание ресниц",
     city: "Санкт-Петербург",
     budget: 4200,
     category: "beauty",
-    client: "Ольга",
-    date: "Сегодня",
+    rating: 4.8,
+    experience: "Авторский уход",
   },
 ];
 
@@ -62,6 +68,12 @@ const budgetFilter = document.getElementById("budgetFilter");
 const sortFilter = document.getElementById("sortFilter");
 const chips = document.querySelectorAll(".chip");
 const searchButton = document.getElementById("searchButton");
+const clearButton = document.getElementById("clearButton");
+
+const tabClient = document.getElementById("tabClient");
+const tabMaster = document.getElementById("tabMaster");
+const pageClient = document.getElementById("pageClient");
+const pageMaster = document.getElementById("pageMaster");
 
 const state = {
   query: "",
@@ -77,55 +89,61 @@ const matchBudget = (budgetValue, filter) => {
   return budgetValue >= min && budgetValue <= max;
 };
 
-const getFilteredOrders = () => {
+const getFilteredMasters = () => {
   const query = state.query.toLowerCase();
   const city = cityFilter.value;
   const budget = budgetFilter.value;
 
-  return orders
-    .filter((order) => {
-      const matchQuery = order.title.toLowerCase().includes(query);
-      const matchCity = city ? order.city === city : true;
-      const matchCategory = state.category ? order.category === state.category : true;
-      const matchBudgetFilter = matchBudget(order.budget, budget);
+  return masters
+    .filter((master) => {
+      const matchQuery =
+        master.title.toLowerCase().includes(query) ||
+        master.name.toLowerCase().includes(query);
+      const matchCity = city ? master.city === city : true;
+      const matchCategory = state.category ? master.category === state.category : true;
+      const matchBudgetFilter = matchBudget(master.budget, budget);
       return matchQuery && matchCity && matchCategory && matchBudgetFilter;
     })
     .sort((a, b) => {
       if (sortFilter.value === "budget") {
-        return b.budget - a.budget;
+        return a.budget - b.budget;
       }
-      return b.id - a.id;
+      if (sortFilter.value === "new") {
+        return b.id - a.id;
+      }
+      return b.rating - a.rating;
     });
 };
 
-const renderOrders = () => {
-  const filteredOrders = getFilteredOrders();
+const renderMasters = () => {
+  const filtered = getFilteredMasters();
 
-  if (!filteredOrders.length) {
+  if (!filtered.length) {
     ordersContainer.innerHTML = `
       <div class="card">
-        <h3>Подходящих заказов пока нет</h3>
-        <p>Попробуйте изменить фильтры или выбрать другую категорию.</p>
+        <h3>Ничего не найдено</h3>
+        <p>Попробуйте изменить запрос или выбрать другую категорию.</p>
       </div>
     `;
     return;
   }
 
-  ordersContainer.innerHTML = filteredOrders
+  ordersContainer.innerHTML = filtered
     .map(
-      (order) => `
+      (master) => `
         <article class="card">
           <div class="meta">
-            <span>${order.city}</span>
-            <span>${order.date}</span>
+            <span>${master.city}</span>
+            <span>Рейтинг ${master.rating}</span>
           </div>
-          <h3>${order.title}</h3>
-          <div class="tag">${order.client}</div>
+          <h3>${master.title}</h3>
+          <div class="pill">${master.name}</div>
+          <p>${master.experience}</p>
           <div class="meta">
-            <span>Бюджет</span>
-            <strong>${formatBudget(order.budget)}</strong>
+            <span>Стоимость</span>
+            <strong>${formatBudget(master.budget)}</strong>
           </div>
-          <button class="primary">Откликнуться</button>
+          <button class="primary" type="button">Выбрать мастера</button>
         </article>
       `
     )
@@ -134,7 +152,26 @@ const renderOrders = () => {
 
 const updateQuery = () => {
   state.query = searchInput.value.trim();
-  renderOrders();
+  renderMasters();
+};
+
+const clearFilters = () => {
+  state.query = "";
+  state.category = "";
+  searchInput.value = "";
+  cityFilter.value = "";
+  budgetFilter.value = "";
+  sortFilter.value = "rating";
+  chips.forEach((chip) => chip.classList.remove("active"));
+  renderMasters();
+};
+
+const setActivePage = (page) => {
+  const isClient = page === "client";
+  pageClient.classList.toggle("active", isClient);
+  pageMaster.classList.toggle("active", !isClient);
+  tabClient.classList.toggle("active", isClient);
+  tabMaster.classList.toggle("active", !isClient);
 };
 
 chips.forEach((chip) => {
@@ -142,14 +179,18 @@ chips.forEach((chip) => {
     const newCategory = chip.dataset.category;
     state.category = state.category === newCategory ? "" : newCategory;
     chips.forEach((item) => item.classList.toggle("active", item === chip && state.category));
-    renderOrders();
+    renderMasters();
   });
 });
 
 searchInput.addEventListener("input", updateQuery);
 searchButton.addEventListener("click", updateQuery);
-cityFilter.addEventListener("change", renderOrders);
-budgetFilter.addEventListener("change", renderOrders);
-sortFilter.addEventListener("change", renderOrders);
+clearButton.addEventListener("click", clearFilters);
+cityFilter.addEventListener("change", renderMasters);
+budgetFilter.addEventListener("change", renderMasters);
+sortFilter.addEventListener("change", renderMasters);
+tabClient.addEventListener("click", () => setActivePage("client"));
+tabMaster.addEventListener("click", () => setActivePage("master"));
 
-renderOrders();
+setActivePage("client");
+renderMasters();
